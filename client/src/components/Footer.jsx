@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import SocialMedia from './SocialMedia';
+
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
+    <footer>
+      <p>&copy; 2024 Techy Software. All rights reserved.</p>
+      <SocialMedia />
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
