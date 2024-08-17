@@ -7,6 +7,7 @@ import About from './components/About';
 import Products from './components/Products';
 import Contact from './components/Contact';
 import './App.css';
+import FeedbackForm from './components/FeedbackForm';
 
 const App = () => {
   return (
@@ -15,16 +16,17 @@ const App = () => {
         <Header />
         <main>
           <Routes>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/products" component={Products} />
-            <Route path="/contact" component={Contact} />
-            </Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/feedback" element={<FeedbackForm/>} />
+          </Routes>
         </main>
         <Footer />
       </div>
     </Router>
   );
-}
+};
 
 export default App;

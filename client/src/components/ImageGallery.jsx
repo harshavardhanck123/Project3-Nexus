@@ -1,30 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import axios from '../services/api';
-
+import React from 'react';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const ImageGallery = () => {
-  const [images, setImages] = useState([]);
+  const imageUrls = [
+    'https://nexusinfo.in/wp-content/uploads/2024/04/zeb-2.png',
+    'https://nexusinfo.in/wp-content/uploads/2024/04/mockup-atmos5.png',
+    'https://nexusinfo.in/wp-content/uploads/2024/04/ddf.png',
+    'https://nexusinfo.in/wp-content/uploads/2024/06/vintage-closet-2.png',
+    'https://nexusinfo.in/wp-content/uploads/2024/06/futball-1.png',
+  ];
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get('/api/images'); // Adjust endpoint as necessary
-        setImages(response.data);
-      } catch (error) {
-        console.error('Error fetching images', error);
-      }
-    };
-    fetchImages();
-  }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
 
   return (
-    <div className="image-gallery">
-      {images.map((image, index) => (
-        <img key={index} src={image.url} alt={image.description} />
-      ))}
+    <div className="image-gallery w-full">
+      <Slider {...settings}>
+        {imageUrls.map((url, index) => (
+          <div key={index} className="px-2">
+            <img
+              src={url}
+              alt={`Image ${index + 1}`}
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 }
 
 export default ImageGallery;
-
